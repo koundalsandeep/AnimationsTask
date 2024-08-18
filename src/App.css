@@ -1,38 +1,195 @@
+/* General App Styling */
 .App {
   text-align: center;
+  padding: 20px;
+  /* background-color: #f4f4f9; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Carousel Container */
+.carousel-container {
+  width: 90%; /* Adjusted width */
+  height: 470px; /* Adjusted height */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.carouselWidth {
+  width: 55% !important;  /* Adjusted width */
+  margin: auto;
+}
+
+/* Carousel Items */
+.carousel-item {
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+/* Button Container */
+.button-container {
+  margin-top: 20px;
+}
+
+/* Buttons Styling */
+.button {
+  background-color: #003366;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 24px; /* Increased padding */
+  margin: 8px; /* Increased margin */
+  font-size: 18px; /* Increased font size */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.button:hover {
+  background-color: #002244;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.button:active {
+  transform: scale(0.95); /* Slightly reduced scale for a more pronounced active effect */
+}
+
+/* Fade Animation */
+.fade {
+  animation: fadeAnimation 1s ease-in-out forwards;
+}
+
+@keyframes fadeAnimation {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Float Animation */
+.float {
+  animation: float 1s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes float {
+  from { transform: translateY(10px); }
+  to { transform: translateY(0); }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Blur Animation */
+.blur {
+  animation: blur 1s ease-in-out;
+}
+
+@keyframes blur {
+  from { filter: blur(5px); }
+  to { filter: blur(0); }
+}
+
+/* Expand Animation */
+.expand {
+  animation: expand 1s ease-in-out;
+}
+
+@keyframes expand {
+  from { transform: scale(0.9); }
+  to { transform: scale(1); }
+}
+
+/* Shrink Animation */
+.shrink {
+  animation: shrink 1s ease-in-out;
+}
+
+@keyframes shrink {
+  from { transform: scale(1.1); }
+  to { transform: scale(1); }
+}
+
+/* Reveal Animation */
+.reveal {
+  animation: reveal 1s ease-in-out;
+}
+
+@keyframes reveal {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Shape Animation */
+.shape {
+  animation: shapeAnimation 1s ease-in-out forwards;
+}
+
+@keyframes shapeAnimation {
+  0% {
+    border-radius: 0;
+    transform: scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    border-radius: 50%;
+    transform: scale(1.1);
+  }
+  100% {
+    border-radius: 0;
+    transform: scale(1);
   }
 }
+
+/* Flip Animation */
+.flip {
+  animation: flip 1s ease-in-out;
+}
+
+@keyframes flip {
+  from { transform: rotateY(90deg); }
+  to { transform: rotateY(0); }
+}
+
+/* Grow Animation */
+.grow {
+  animation: grow 1s ease-in-out;
+}
+
+@keyframes grow {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
+
+/* Wink Animation */
+.wink {
+  animation: wink 1s ease-in-out;
+}
+
+@keyframes wink {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.9); }
+}
+
+/* Slide Animation */
+.slide {
+  animation: slide 1s ease-in-out;
+}
+
+@keyframes slide {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+/* Flash Animation */
+.flash {
+  animation: flash 1s ease-in-out;
+}
+
+@keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
