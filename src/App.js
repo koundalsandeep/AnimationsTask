@@ -35,6 +35,7 @@ function App() {
         <CarouselSlider key={index} effect={effect} slides={slides} />
       ))}
       <div className="button-container">
+        <h3>Duration</h3>
         <div className="duration-buttons">
           <button className='button' onClick={() => setAnimationDuration('1s')}>1s</button>
           <button className='button' onClick={() => setAnimationDuration('2s')}>2s</button>
