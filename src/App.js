@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './App.css'; // Import your updated CSS
 
 function App() {
+ 
   const animations = [
     'fade',
     'float',
@@ -25,11 +26,23 @@ function App() {
     "https://www.w3schools.com/bootstrap/ny.jpg"
   ];
 
+  const setAnimationDuration = (duration) => {
+    document.documentElement.style.setProperty('--animation-duration', duration);
+  };
   return (
     <div className="App">
       {animations.map((effect, index) => (
         <CarouselSlider key={index} effect={effect} slides={slides} />
       ))}
+      <div className="button-container">
+        <div className="duration-buttons">
+          <button className='button' onClick={() => setAnimationDuration('1s')}>1s</button>
+          <button className='button' onClick={() => setAnimationDuration('2s')}>2s</button>
+          <button className='button' onClick={() => setAnimationDuration('3s')}>3s</button>
+          <button className='button' onClick={() => setAnimationDuration('4s')}>4s</button>
+          <button className='button' onClick={() => setAnimationDuration('5s')}>5s</button>
+        </div>
+      </div>
     </div>
   );
 }

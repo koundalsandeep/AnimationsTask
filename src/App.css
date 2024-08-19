@@ -1,3 +1,7 @@
+
+:root {
+  --animation-duration: 2s; /* Default value */
+}
 /* General App Styling */
 .App {
   text-align: center;
@@ -44,7 +48,7 @@
   margin: 8px; /* Increased margin */
   font-size: 18px; /* Increased font size */
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: background-color 0.var(--animation-duration) ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover {
@@ -55,10 +59,15 @@
 .button:active {
   transform: scale(0.95); /* Slightly reduced scale for a more pronounced active effect */
 }
+.button-container {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+}
 
 /* Fade Animation */
 .fade {
-  animation: fadeAnimation 3s ease-in-out forwards;
+  animation: fadeAnimation var(--animation-duration) ease-in-out forwards;
 }
 
 @keyframes fadeAnimation {
@@ -75,7 +84,7 @@
 
 /* Float Animation */
 .float {
-  animation: float 3s ease-in-out;
+  animation: float var(--animation-duration) ease-in-out;
 }
 
 @keyframes float {
@@ -85,7 +94,7 @@
 
 /* Blur Animation */
 .blur {
-  animation: blur 3s ease-in-out;
+  animation: blur var(--animation-duration) ease-in-out;
 }
 
 @keyframes blur {
@@ -95,7 +104,7 @@
 
 /* Expand Animation */
 .expand {
-  animation: expand 3s ease-in-out;
+  animation: expand var(--animation-duration) ease-in-out;
 }
 
 @keyframes expand {
@@ -105,7 +114,7 @@
 
 /* Shrink Animation */
 .shrink {
-  animation: shrink 3s ease-in-out;
+  animation: shrink var(--animation-duration) ease-in-out;
 }
 
 @keyframes shrink {
@@ -115,7 +124,7 @@
 
 /* Reveal Animation */
 .reveal {
-  animation: reveal 3s ease-in-out;
+  animation: reveal var(--animation-duration) ease-in-out;
 }
 
 @keyframes reveal {
@@ -125,7 +134,7 @@
 
 /* Shape Animation */
 .shape {
-  animation: shapeAnimation 3s ease-in-out forwards;
+  animation: shapeAnimation var(--animation-duration) ease-in-out forwards;
 }
 
 @keyframes shapeAnimation {
@@ -145,7 +154,7 @@
 
 /* Flip Animation */
 .flip {
-  animation: flip 3s ease-in-out;
+  animation: flip var(--animation-duration) ease-in-out;
 }
 
 @keyframes flip {
@@ -155,7 +164,7 @@
 
 /* Grow Animation */
 .grow {
-  animation: grow 3s ease-in-out;
+  animation: grow var(--animation-duration) ease-in-out;
 }
 
 @keyframes grow {
@@ -165,7 +174,7 @@
 
 /* Wink Animation */
 .wink {
-  animation: wink 3s ease-in-out;
+  animation: wink var(--animation-duration) ease-in-out;
 }
 
 @keyframes wink {
@@ -175,7 +184,7 @@
 
 /* Slide Animation */
 .slide {
-  animation: slide 3s ease-in-out;
+  animation: slide var(--animation-duration) ease-in-out;
 }
 
 @keyframes slide {
@@ -185,7 +194,7 @@
 
 /* Flash Animation */
 .flash {
-  animation: flash 3s ease-in-out;
+  animation: flash var(--animation-duration) ease-in-out;
 }
 
 @keyframes flash {
