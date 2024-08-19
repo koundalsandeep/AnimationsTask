@@ -58,7 +58,7 @@
 
 /* Fade Animation */
 .fade {
-  animation: fadeAnimation 1s ease-in-out forwards;
+  animation: fadeAnimation 3s ease-in-out forwards;
 }
 
 @keyframes fadeAnimation {
@@ -75,7 +75,7 @@
 
 /* Float Animation */
 .float {
-  animation: float 1s ease-in-out;
+  animation: float 3s ease-in-out;
 }
 
 @keyframes float {
@@ -85,7 +85,7 @@
 
 /* Blur Animation */
 .blur {
-  animation: blur 1s ease-in-out;
+  animation: blur 3s ease-in-out;
 }
 
 @keyframes blur {
@@ -95,7 +95,7 @@
 
 /* Expand Animation */
 .expand {
-  animation: expand 1s ease-in-out;
+  animation: expand 3s ease-in-out;
 }
 
 @keyframes expand {
@@ -105,7 +105,7 @@
 
 /* Shrink Animation */
 .shrink {
-  animation: shrink 1s ease-in-out;
+  animation: shrink 3s ease-in-out;
 }
 
 @keyframes shrink {
@@ -115,7 +115,7 @@
 
 /* Reveal Animation */
 .reveal {
-  animation: reveal 1s ease-in-out;
+  animation: reveal 3s ease-in-out;
 }
 
 @keyframes reveal {
@@ -125,7 +125,7 @@
 
 /* Shape Animation */
 .shape {
-  animation: shapeAnimation 1s ease-in-out forwards;
+  animation: shapeAnimation 3s ease-in-out forwards;
 }
 
 @keyframes shapeAnimation {
@@ -145,7 +145,7 @@
 
 /* Flip Animation */
 .flip {
-  animation: flip 1s ease-in-out;
+  animation: flip 3s ease-in-out;
 }
 
 @keyframes flip {
@@ -155,7 +155,7 @@
 
 /* Grow Animation */
 .grow {
-  animation: grow 1s ease-in-out;
+  animation: grow 3s ease-in-out;
 }
 
 @keyframes grow {
@@ -165,7 +165,7 @@
 
 /* Wink Animation */
 .wink {
-  animation: wink 1s ease-in-out;
+  animation: wink 3s ease-in-out;
 }
 
 @keyframes wink {
@@ -175,7 +175,7 @@
 
 /* Slide Animation */
 .slide {
-  animation: slide 1s ease-in-out;
+  animation: slide 3s ease-in-out;
 }
 
 @keyframes slide {
@@ -185,7 +185,7 @@
 
 /* Flash Animation */
 .flash {
-  animation: flash 1s ease-in-out;
+  animation: flash 3s ease-in-out;
 }
 
 @keyframes flash {
