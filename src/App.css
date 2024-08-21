@@ -17,7 +17,7 @@
 /* Carousel Container */
 .carousel-container {
   width: 90%; /* Adjusted width */
-  height: 470px; /* Adjusted height */
+  min-height: 470px; /* Adjusted height */
 }
 
 .carouselWidth {
