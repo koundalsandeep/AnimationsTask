@@ -79,48 +79,25 @@
   100% { opacity: 1; }
 }
 
-/* Float Animation */
-/* Base styles for float animation */
-.float {
-  animation: floatAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+.carousel-item {
+  transition-property: transform;
 }
 
-/* Float animation keyframes for different directions */
-@keyframes floatTop {
-  0% {
-    transform: translateY(-20px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.carousel-item.float {
+  animation: float var(--animation-duration) ease-in-out var(--animation-delay) forwards;
 }
 
-@keyframes floatBottom {
+@keyframes float {
   0% {
-    transform: translateY(20px);
+    opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    opacity: 1;
+    transform: translate(0, 0); /* Adjusted by JavaScript */
   }
 }
 
-@keyframes floatLeft {
-  0% {
-    transform: translateX(-20px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 
-@keyframes floatRight {
-  0% {
-    transform: translateX(20px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
 
 
 @keyframes blurAnimation {
