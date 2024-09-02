@@ -4,6 +4,7 @@
   --animation-direction: top;
   --animation-distance: 1;
   --animation-shape: circle;
+  --expand-animation: circle;
   --animation-style: gentle;
 }
 
@@ -99,60 +100,313 @@
 
 
 
-
+/* Blur Animation */
 @keyframes blurAnimation {
-  0% { filter: blur(5px); }
-  100% { filter: blur(0); }
+  from {
+    filter: blur(var(--blur-amount));
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+
+.blur-gentle {
+  --blur-amount: 2px;
+  animation: blurAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.blur-moderate {
+  --blur-amount: 4px;
+  animation: blurAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.blur-intense {
+  --blur-amount: 6px;
+  animation: blurAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
 /* Expand Animation */
-.expand {
-  animation: expandAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+@keyframes expandRight {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
 
-@keyframes expandAnimation {
-  0% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+@keyframes expandTopRight {
+  from {
+    transform: scale(0);
+    transform-origin: left bottom;
+  }
+  to {
+    transform: scale(1);
+    transform-origin: left bottom;
+  }
 }
 
+@keyframes expandTop {
+  from {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes expandTopLeft {
+  from {
+    transform: scale(0);
+    transform-origin: right bottom;
+  }
+  to {
+    transform: scale(1);
+    transform-origin: right bottom;
+  }
+}
+
+@keyframes expandLeft {
+  from {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+}
+
+@keyframes expandBottomLeft {
+  from {
+    transform: scale(0);
+    transform-origin: right top;
+  }
+  to {
+    transform: scale(1);
+    transform-origin: right top;
+  }
+}
+
+@keyframes expandBottom {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+@keyframes expandBottomRight {
+  from {
+    transform: scale(0);
+    transform-origin: left top;
+  }
+  to {
+    transform: scale(1);
+    transform-origin: left top;
+  }
+}
+
+@keyframes expandCenter {
+  from {
+    transform: scale(0);
+    transform-origin: center;
+  }
+  to {
+    transform: scale(1);
+    transform-origin: center;
+  }
+}
+
+.expand-gentle {
+  animation: var(--expand-animation) var(--animation-duration) var(--animation-delay) ease-in-out;
+}
+
+.expand-moderate {
+  animation: var(--expand-animation) calc(var(--animation-duration) * 0.75) var(--animation-delay) ease-in-out;
+}
+
+.expand-intense {
+  animation: var(--expand-animation) calc(var(--animation-duration) * 0.5) var(--animation-delay) ease-in-out;
+}
 /* Shrink Animation */
-.shrink {
+@keyframes shrinkAnimation {
+  from {
+    transform: scale(var(--shrink-amount));
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.shrink-gentle {
+  --shrink-amount: 0.9;
   animation: shrinkAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
-@keyframes shrinkAnimation {
-  0% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+.shrink-moderate {
+  --shrink-amount: 0.75;
+  animation: shrinkAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.shrink-intense {
+  --shrink-amount: 0.6;
+  animation: shrinkAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
 /* Reveal Animation */
-.reveal {
-  animation: revealAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+@keyframes revealFromTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-@keyframes revealAnimation {
-  0% { transform: translateY(100%); }
-  100% { transform: translateY(0); }
+@keyframes revealFromBottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
-/* Shape Animation */
-.shape {
-  animation: shapeAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+@keyframes revealFromLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
-@keyframes shapeAnimation {
-  0% { clip-path: circle(0%); }
-  100% { clip-path: var(--animation-shape); }
+@keyframes revealFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.reveal-top {
+  animation: revealFromTop var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.reveal-bottom {
+  animation: revealFromBottom var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.reveal-left {
+  animation: revealFromLeft var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.reveal-right {
+  animation: revealFromRight var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+/* Keyframes for shape animation */
+@keyframes shapeToImage {
+  from {
+    clip-path: var(--start-clip-path);
+    opacity: 0;
+  }
+  to {
+    clip-path: var(--end-clip-path);
+    opacity: 1;
+  }
+}
+
+/* Shape styles */
+.shape-oval {
+  --start-clip-path: ellipse(50% 50% at 50% 50%);
+  --end-clip-path: inset(0%);
+  animation: shapeToImage var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.shape-circle {
+  --start-clip-path: circle(50%);
+  --end-clip-path: inset(0%);
+  animation: shapeToImage var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.shape-square {
+  --start-clip-path: inset(0%);
+  --end-clip-path: inset(0%);
+  animation: shapeToImage var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.shape-diamond {
+  --start-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  --end-clip-path: inset(0%);
+  animation: shapeToImage var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
 /* Flip Animation */
-.flip {
-  animation: flipAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+@keyframes flipTop {
+  from {
+    transform: rotateX(180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
 }
 
-@keyframes flipAnimation {
-  0% { transform: rotateY(180deg); }
-  100% { transform: rotateY(0); }
+@keyframes flipBottom {
+  from {
+    transform: rotateX(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flipLeft {
+  from {
+    transform: rotateY(-180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes flipRight {
+  from {
+    transform: rotateY(180deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Motion styles */
+.flip-gentle {
+  animation: var(--flip-animation) var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.flip-moderate {
+  animation: var(--flip-animation) var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.flip-intense {
+  animation: var(--flip-animation) var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
 /* Grow Animation */
@@ -166,13 +420,43 @@
 }
 
 /* Wink Animation */
-.wink {
-  animation: winkAnimation var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+@keyframes wynkHorizontal {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-@keyframes winkAnimation {
-  0%, 100% { transform: scaleX(1); }
-  50% { transform: scaleX(0.9); }
+/* Keyframes for vertical Wynk animation */
+@keyframes wynkVertical {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(50%);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.wynk-horizontal {
+  animation: wynkHorizontal var(--animation-duration) var(--animation-delay) ease-in-out forwards;
+}
+
+.wynk-vertical {
+  animation: wynkVertical var(--animation-duration) var(--animation-delay) ease-in-out forwards;
 }
 
 /* Slide Animation */
