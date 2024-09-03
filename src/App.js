@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./App.css"; // Import your updated CSS
@@ -26,29 +26,93 @@ function App() {
   ];
 
   const [animationOptions, setAnimationOptions] = useState({
-    fade: { duration: "1s", delay: "0s" },
-    float: { direction: "Top", duration: "1s", delay: "0s" },
-    blur: { style: "Gentle", duration: "1s", delay: "0s" },
+    fade: {
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    float: {
+      direction: "Top",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    blur: {
+      style: "Gentle",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
     expand: {
       style: "Gentle",
       direction: "Right",
       duration: "1s",
       delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
     },
-    shrink: { style: "Gentle", duration: "1s", delay: "0s" },
-    reveal: { direction: "Top", duration: "1s", delay: "0s" },
-    shape: { shape: "Oval", duration: "1s", delay: "0s" },
-    flip: { style: "Gentle", direction: "Top", duration: "1s", delay: "0s" },
+    shrink: {
+      style: "Gentle",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    reveal: {
+      direction: "Top",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    shape: {
+      shape: "Oval",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    flip: {
+      style: "Gentle",
+      direction: "Top",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
     grow: {
       style: "Gentle",
       direction: "0",
       distance: "100px",
       duration: "1s",
       delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
     },
-    wink: { direction: "Horizontal", duration: "1s", delay: "0s" },
-    slide: { style: "Gentle", direction: "Top", duration: "1s", delay: "0s" },
-    flash: { duration: "1s", delay: "0s" },
+    wink: {
+      direction: "Horizontal",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    slide: {
+      style: "Gentle",
+      direction: "Top",
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
+    flash: {
+      duration: "1s",
+      delay: "0s",
+      autoplayTimeout: 1,
+      autoplayHoverPause: false,
+    },
   });
 
   const handleOptionChange = (effect, option, value) => {
@@ -80,7 +144,16 @@ function App() {
 
 function CarouselSlider({ effect, slides, options, onOptionChange }) {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const [isPaused, setIsPaused] = useState(false);
+  useEffect(() => {
+    let interval;
+    if (options.autoplay && !isPaused) {
+      interval = setInterval(() => {
+        handleNext();
+      }, options.autoplayTimeout * 1000);
+    }
+    return () => clearInterval(interval);
+  }, [activeIndex, isPaused, options.autoplay, options.autoplayTimeout]);
   const handleNext = () => {
     const nextIndex = (activeIndex + 1) % slides.length;
     setActiveIndex(nextIndex);
@@ -89,6 +162,17 @@ function CarouselSlider({ effect, slides, options, onOptionChange }) {
   const handlePrev = () => {
     const prevIndex = (activeIndex - 1 + slides.length) % slides.length;
     setActiveIndex(prevIndex);
+  };
+  const handleMouseEnter = () => {
+    if (options.autoplayHoverPause) {
+      setIsPaused(true);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (options.autoplayHoverPause) {
+      setIsPaused(false);
+    }
   };
 
   const getBlurStyleClass = () => {
@@ -592,9 +676,33 @@ function CarouselSlider({ effect, slides, options, onOptionChange }) {
             />
           </>
         )}
+        <label>Autoplay:</label>
+        <input
+          type="checkbox"
+          checked={options.autoplay}
+          onChange={(e) => onOptionChange("autoplay", e.target.checked)}
+        />
+        <label>Autoplay Timeout (ms):</label>
+        <input
+          type="number"
+          value={options.autoplayTimeout}
+          onChange={(e) => onOptionChange("autoplayTimeout", e.target.value)}
+        />
+        <label>Autoplay Hover Pause:</label>
+        <input
+          type="checkbox"
+          checked={options.autoplayHoverPause}
+          onChange={(e) =>
+            onOptionChange("autoplayHoverPause", e.target.checked)
+          }
+        />
       </div>
       <div className="carousel slide carouselWidth">
-        <div className="carousel-inner">
+        <div
+          className="carousel-inner"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
           {slides.map((slide, slideIndex) => (
             <div
               key={slideIndex}
@@ -605,7 +713,7 @@ function CarouselSlider({ effect, slides, options, onOptionChange }) {
                 ...getFloatDirectionStyle(),
                 "--animation-duration": options.duration,
                 "--expand-animation": getExpandAnimation(),
-                '--flip-animation': getFlipAnimation(),
+                "--flip-animation": getFlipAnimation(),
                 "--animation-delay": options.delay,
               }}
             >
